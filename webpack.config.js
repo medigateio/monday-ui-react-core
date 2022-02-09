@@ -107,8 +107,8 @@ module.exports = options => {
     },
     externals: [nodeExternals()],
     entry: {
-      main: path.join(__dirname, "/src/storybook/index.js")
-      // ...getPublishedComponents(__dirname)
+      main: path.join(__dirname, "/src/storybook/index.js"),
+      ...getPublishedComponents(__dirname)
     },
     output: {
       path: path.join(__dirname, "/dist/"),
