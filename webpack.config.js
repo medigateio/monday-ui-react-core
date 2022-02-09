@@ -91,13 +91,24 @@ module.exports = options => {
           test: /\.css$/,
           include: [path.resolve(__dirname, "not_exist_path")],
           use: styleLoaders
+        },
+        {
+          test: /\.(jpe?g|png|gif|ico|svg)$/i,
+          use: [
+            {
+              loader: "file-loader",
+              options: {
+                name: "[name].[ext]"
+              }
+            }
+          ]
         }
       ]
     },
     externals: [nodeExternals()],
     entry: {
-      main: path.join(__dirname, "/src/index.js"),
-      ...getPublishedComponents(__dirname)
+      main: path.join(__dirname, "/src/storybook/index.js")
+      // ...getPublishedComponents(__dirname)
     },
     output: {
       path: path.join(__dirname, "/dist/"),
